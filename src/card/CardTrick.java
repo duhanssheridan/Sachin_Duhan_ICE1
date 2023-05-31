@@ -16,15 +16,22 @@ public class CardTrick {
     
     public static void main(String[] args)
     {
-        Card[] magicHand = new Card[7];
+        Card[] magicHand = new Card[8]; // Increased array size to accommodate lucky card
         
-        for (int i=0; i<magicHand.length; i++)
+        for (int i=0; i<magicHand.length-1; i++)
         {
             Card c = new Card();
             c.setValue((int) (Math.random() * 13 + 1));  
             c.setSuit(Card.SUITS[(int) (Math.random() * 4)]);  
             magicHand[i] = c;
         }
+        
+        // Add the lucky card
+        Card luckyCard = new Card();
+        luckyCard.setValue(7); // Example: Card number 7
+        luckyCard.setSuit(Card.SUITS[2]); // Example: Hearts
+        magicHand[magicHand.length-1] = luckyCard;
+        
         Scanner input = new Scanner(System.in);
         System.out.print("Enter the value of your card (1-13)= ");
         int userValue = input.nextInt();
